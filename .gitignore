@@ -11,13 +11,26 @@ app/storage/
 public/storage
 public/hot
 
+# Project specific ignores
+public/assets
+public/css
+public/dist
+public/files
+public/images
+public/js
+public/uploads
+
 # Laravel 5 & Lumen specific with changed public path
 public_html/storage
 public_html/hot
 
 storage/*.key
 .env
+.env.backup
 Homestead.yaml
 Homestead.json
 /.vagrant
 .phpunit.result.cache
+docker-compose.override.yml
+/.idea
+/.vscode
