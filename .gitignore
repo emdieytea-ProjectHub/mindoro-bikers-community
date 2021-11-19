@@ -12,9 +12,9 @@ public/storage
 public/hot
 
 # Project specific ignores
-public/assets
+# public/assets
 public/css
-public/dist
+# public/dist
 public/files
 public/images
 public/js

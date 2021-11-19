@@ -73,35 +73,18 @@
 
             </div>
 
-            <div class="top-area">
-                <span style="color:red; font-weight:bold;">
-                @if(\Auth::check())
-                <a href="{{ route('home') }}">News Feed</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{{ route('profile') }}">Profile</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                @endif
-                <a href="{{ route('tournaments') }}">Bike Tournament</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{{ route('market') }}">Marketplace</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                @if(\Auth::check())
-                <a href="{{ route('groups') }}">Groups</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{{ route('messages') }}">Message</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                @endif
-                <a href="{{ route('map') }}">Map</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                @if(\Auth::check())
-                <a href="{{ route('client.logout') }}">Logout</a></span>
-                @endif
-                <div class="top-search">
-               
-                </div>
-             
-              
-                 @guest
+            <div class="top-area" style="vertical-align: middle;">
+                @guest
+                    <span style="color:red; font-weight:bold;">
+                        <a href="{{ route('tournaments') }}">Bike Tournament</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="{{ route('market') }}">Marketplace</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="{{ route('map') }}">Map</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    </span>
                     <div class="login-form mb-2">
-
                         <div class="btn-group" style="margin-top: 10px">
-                            <a href="{{ route('login') }}" class="btn btn-success">Login</a> &nbsp
+                            <a href="{{ route('login') }}" class="btn btn-success">Login</a> &nbsp;
                             <a href="{{ route('register') }}" class="btn btn-warning">Register</a>
                         </div>
-
                     </div>
                 @endguest
                 
@@ -109,21 +92,39 @@
                     <div class="user-img">
                         <img src="{{ asset(auth()->user()->avatar) }}" alt="" class="img-fluid" width="60">
                         <span class="f-online"></span>
-                        {{ auth()->user()->fname }} {{ auth()->user()->lname }}
-
-                        <!--
-                                                <div class="user-setting">
-                                                    <a href="{{ route('profile') }}" title="">
-                                                        <i class="ti-pencil-alt"></i>edit profile
-                                                    </a>
-                                                    <a href="/logout" title="">
-                                                        <i class="ti-power-off"></i>log out
-                                                    </a>
-                                                </div> -->
+                        {{ auth()->user()->fname }} {{ auth()->user()->lname }} <i class="fa fa-caret-down"></i>
+                        <div class="user-setting">
+                            <a href="{{ route('home') }}" title="">
+                                <i class="fa fa-newspaper-o"></i>news feed
+                            </a>
+                            <a href="{{ route('profile') }}" title="">
+                                <i class="fa fa-user"></i>profile
+                            </a>
+                            <a href="{{ route('tournaments') }}" title="">
+                                <i class="fa fa-flag"></i>bike tournament
+                            </a>
+                            <a href="{{ route('market') }}" title="">
+                                <i class="fa fa-money"></i>marketplace
+                            </a>
+                            <a href="{{ route('groups') }}" title="">
+                                <i class="fa fa-group"></i>groups
+                            </a>
+                            <a href="{{ route('messages') }}" title="">
+                                <i class="fa fa-send"></i>message
+                            </a>
+                            <a href="{{ route('map') }}" title="">
+                                <i class="ti-map-alt"></i>map
+                            </a>
+                            <a href="{{ route('client.logout') }}" title="">
+                                <i class="ti-power-off"></i>log out
+                            </a>
+                        </div>
                     </div>
                 @endauth
-
-
+                
+                <div class="top-search">
+               
+                </div>
             </div>
             <img src="{{ asset('images/bikericon.png') }}"
                 style="height:90px; margin-left:120px; position:relative; margin-top:-82px;" type="image/jpg"
@@ -296,6 +297,11 @@
     <script src="{{ asset('dist/js/main.min.js') }}"></script>
     <script src="{{ asset('dist/js/script.js') }}"></script>
     <script src="https://use.fontawesome.com/f95035c2cc.js"></script>
+    <script>
+        $('.user-img').on('click', function() {
+            $('.user-settings').toggleClass("active");
+        });	
+    </script>
     @stack('custom-scripts')
 
 
