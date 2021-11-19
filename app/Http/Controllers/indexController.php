@@ -386,7 +386,8 @@ class indexController extends Controller
 		$showType = 3;
 		$people = Message::where('receiver_id', Auth::id())
 			->orWhere('sender_id', Auth::id())->get();
-		return view('users.messages', compact('people', 'showType', 'chat_id'));
+		$messages = Conversation::with('chat')->where('chat_id', $chat_id)->get();
+		return view('users.messages', compact('people', 'showType', 'chat_id', 'messages'));
 	}
 
 	public function logout()

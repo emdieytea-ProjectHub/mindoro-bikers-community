@@ -13,7 +13,11 @@
                         <li>
                             <a href="{{ route('getmessages', $person->id) }}">
                             <figure>
-                                <img src="{{ asset('dist/images/resources/friend-avatar10.jpg') }}" alt="">
+                                @if ($person->sender_id == Auth::id())
+                                <img src="{{ asset($person->receiver->avatar) }}" alt="">
+                                @else
+                                <img src="{{ asset($person->sender->avatar) }}" alt="">
+                                @endif 
                                 <span class="status f-online"></span>
                             </figure>
                             <div class="people-name">
@@ -48,11 +52,11 @@
                             
                         <ul class="chatting-area">
 
-                            @foreach ($person->messageDetails as $messages )
+                            @foreach ($messages as $msg )
                                 
-                            <li class="@if ($messages->user_id==Auth::id())me @else you @endif">
-                                <figure><img src="{{ asset('dist/images/resources/userlist-2.jpg') }}" alt=""></figure>
-                                <p>{{ $messages->message }}</p>
+                            <li class="@if ($msg->user_id==Auth::id())me @else you @endif">
+                                <figure><img src="{{ asset($msg->chat->sender_id == Auth::id() ? $msg->chat->receiver->avatar : $msg->chat->sender->avatar) }}" alt=""></figure>
+                                <p>{{ $msg->message }}</p>
                             </li>
                             @endforeach
                             
