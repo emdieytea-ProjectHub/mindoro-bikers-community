@@ -1,8 +1,6 @@
 @extends('users.layout.app')
 
 @section('body')
-    <div class="col-lg-6">
-
         <div class="loadMore">
             <div class="central-meta item">
 
@@ -116,7 +114,6 @@
 
 
         </div>
-    </div>
 @endsection
 
 <!-- centerl meta -->

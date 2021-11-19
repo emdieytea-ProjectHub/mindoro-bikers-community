@@ -1,7 +1,6 @@
 @extends('users.layout.app')
 
 @section('body')
-    <div class="col-lg-6">
         <div class="central-meta" style="border: 3px solid #0af5dd; border-radius:5px;  box-shadow: 10px 10px aquamarine; ">
             <div class="frnds">
                 <ul class="nav nav-tabs">
@@ -215,5 +214,4 @@
                 </div>
             </div>
         </div>
-    </div>
 @endsection

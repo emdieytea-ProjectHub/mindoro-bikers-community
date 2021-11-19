@@ -225,8 +225,6 @@
 
         </aside>
     </div>
-
-
 @endsection
 
 @push('custom-scripts')

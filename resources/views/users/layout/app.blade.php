@@ -14,6 +14,13 @@
     <link rel="stylesheet" href="{{ asset('dist/css/color.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/css/responsive.css') }}">
 
+    <style>
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+    @yield('head-scripts')
 </head>
 
 <body>
@@ -68,7 +75,20 @@
 
             <div class="top-area">
                 <span style="color:red; font-weight:bold;">
-<a href="https://mbcbikers.site">News Feed</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../profile">Profile</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../tournaments">Bike Tournament</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../market">Marketplace</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../groups">Groups</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../messages">Message</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../map">Map</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../clients/logout">Logout</a></span>
+                @if(\Auth::check())
+                <a href="{{ route('home') }}">News Feed</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{{ route('profile') }}">Profile</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                @endif
+                <a href="{{ route('tournaments') }}">Bike Tournament</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{{ route('market') }}">Marketplace</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                @if(\Auth::check())
+                <a href="{{ route('groups') }}">Groups</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{{ route('messages') }}">Message</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                @endif
+                <a href="{{ route('map') }}">Map</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                @if(\Auth::check())
+                <a href="{{ route('client.logout') }}">Logout</a></span>
+                @endif
                 <div class="top-search">
                
                 </div>
@@ -118,10 +138,10 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="row" id="page-contents">
-                                <div class="col-lg-3">
+                                <div class="col-md-4 col-lg-3">
                                     <aside class="sidebar static">
                                         <div class="widget"
-                                            style="border-right:7px outset; border-bottom:10px outset;  border-radius: 10px; border-color:#0af5dd">
+                                            style="border-right:7px outset; border-bottom:10px outset; border-radius: 10px; border-color:#0af5dd; width: auto;">
                                             <img src="{{ asset('images/bikers.jpg') }}"
                                                 style="height:200px; margin-left:20px; margin-top:20px;"
                                                 type="image/jpg" sizes="5x5">
@@ -129,6 +149,7 @@
 
                                             </h4>
                                             <ul class="naves">
+                                                @if(\Auth::check())
                                                 <li class="hovs">
                                                     <i class="fa fa-globe" style="color: #28babf;"></i>
                                                     <a href="{{ route('home') }}" title="">News feed</a>
@@ -137,34 +158,35 @@
                                                     <i class="fa fa-address-book" style="color: #28babf;"></i>
                                                     <a href="{{ route('profile') }}" title="">Profile</a>
                                                 </li>
+                                                @endif
                                                 <li class="hovs">
                                                     <i class="fa fa-trophy" style="color: #28babf;"></i>
                                                     <a href="{{ route('tournaments') }}" title="">Bike Tournament</a>
                                                 </li>
-
                                                 <li class="hovs">
                                                     <i class="fa fa-shopping-basket" style="color: #28babf;"></i>
                                                     <a href="{{ route('market') }}" title="">marketplace</a>
                                                 </li>
+                                                @if(\Auth::check())
                                                 <li class="hovs">
                                                     <i class="fa fa-users" style="color: #28babf;"></i>
                                                     <a href="{{ route('groups') }}" title="">Groups</a>
                                                 </li>
-
                                                 <li class="hovs">
                                                     <i class="fa fa-comment" style="color: #28babf;"></i>
                                                     <a href="{{ route('messages') }}" title="">Message</a>
                                                 </li>
-
+                                                @endif
                                                 <li class="hovs">
                                                     <i class="fa fa-map-marker" style="color: #28babf;"></i>
                                                     <a href="{{ route('map') }}" title="">Map</a>
                                                 </li>
-
+                                                @if(\Auth::check())
                                                 <li class="hovs">
                                                     <i class="ti-power-off" style="color: #28babf;"></i>
                                                     <a href="{{ route('client.logout') }}" title="">Logout</a>
                                                 </li>
+                                                @endif
                                             </ul>
                                         </div><!-- Shortcuts -->
 
@@ -176,65 +198,61 @@
 
                                 </div>
 
+                                @if (Request::is('market/*') || Request::is('market'))
+                                    @yield('body')
+                                @else
+                                <div class="col-md-4 col-lg-6">
+                                    @yield('body')
+                                </div>
+                                @endif
 
-                                @yield('body')
 
-
-                                <div class="col-lg-3
-      @if (Request::is('market/add-product')) d-block @endif
-                                    @if (Request::is('market/*') || Request::is('market')) d-none @endif">
+                                <div class="col-md-4 col-lg-3 @if (Request::is('market/add-product')) d-block @endif @if (Request::is('market/*') || Request::is('market')) d-none @endif">
                                     <aside class="sidebar static">
                                         <div class="widget"
-                                            style="border-right:7px outset; border-bottom:10px outset; width:320px; border-radius: 10px; border-color:#0af5dd">
+                                            style="border-right:7px outset; border-bottom:10px outset; border-radius: 10px; border-color:#0af5dd; width: auto;">
                                             <h4 class="widget-title">Feature Photos</h4>
+                                            
+                                            <div style="margin-left:20px; margin-right:20px;">
+                                                <img src="{{ asset('images/biker1.jpg') }}"
+                                                    style="height:200px; width:100%; display:block;"
+                                                    type="image/jpg" sizes="5x5">
+                                                <h4 style="font-size:12px; color:gray; margin-top:10px; margin-left:20px;">
+                                                    <b>"All time favorite the Longest Bridge Abaton Located in Barangay
+                                                        Parang
+                                                        "
+                                                </h4>
+                                                <img src="{{ asset('images/biker2.jpg') }}"
+                                                    style="height:200px; width:100%; display:block;"
+                                                    type="image/jpg" sizes="5x5">
+                                                <h4 style="font-size:12px; color:gray; margin-top:10px; margin-left:20px;">
+                                                    <b>"Barangay Wawa Port, where you can enjoy the Sunset"
 
-                                            <img src="{{ asset('images/biker1.jpg') }}"
-                                                style="height:200px; margin-left:20px; margin-top:20px;"
-                                                type="image/jpg" sizes="5x5">
-                                            <h4 style="font-size:12px; color:gray; margin-top:10px; margin-left:20px;">
-                                                <b>"All time favorite the Longest Bridge Abaton Located in Barangay
-                                                    Parang
-                                                    "
-                                            </h4>
+                                                </h4>
 
-                                            <img src="{{ asset('images/biker2.jpg') }}"
-                                                style="height:190px; width: 265px; margin-left:20px; margin-top:20px;"
-                                                type="image/jpg" sizes="5x5">
-                                            <h4 style="font-size:12px; color:gray; margin-top:10px; margin-left:20px;">
-                                                <b>"Barangay Wawa Port, where you can enjoy the Sunset"
+                                                <img src="{{ asset('images/biker3.jpg') }}"
+                                                    style="height:200px; width:100%; display:block;"
+                                                    type="image/jpg" sizes="5x5">
+                                                <h4 style="font-size:12px; color:gray; margin-top:10px; margin-left:20px;">
+                                                    <b>
 
-                                            </h4>
+                                                        "The all time favorite Cyclist Tambayan Place at night where you can
+                                                        enjoy the wind breeze, sunset and milktea shop is all available,
+                                                        located at Xevera Neo Front of Clubhouse"
+                                                </h4>
+                                                <img src="{{ asset('images/biker4.jpg') }}"
+                                                    style="height:200px; width:100%; display:block;"
+                                                    type="image/jpg" sizes="5x5">
+                                                <h4 style="font-size:12px; color:gray; margin-top:10px; margin-left:20px;">
+                                                    <b>
 
-                                            <img src="{{ asset('images/biker3.jpg') }}"
-                                                style="height:200px; margin-left:20px; margin-top:20px;"
-                                                type="image/jpg" sizes="5x5">
-                                            <h4 style="font-size:12px; color:gray; margin-top:10px; margin-left:20px;">
-                                                <b>
-
-                                                    "The all time favorite Cyclist Tambayan Place at night where you can
-                                                    enjoy the wind breeze, sunset and milktea shop is all available,
-                                                    located at Xevera Neo Front of Clubhouse"
-                                            </h4>
-                                            <img src="{{ asset('images/biker4.jpg') }}"
-                                                style="height:200px; width:270px; margin-left:20px; margin-top:20px;"
-                                                type="image/jpg" sizes="5x5">
-                                            <h4 style="font-size:12px; color:gray; margin-top:10px; margin-left:20px;">
-                                                <b>
-
-                                                    "After long ahon enjoy the food and instagramable place in Camp Wagi
-                                                    or Camp Jameaaf's alsi called Mt. Arayat, located at Barangay Bondo
-                                                    Calapan City"
-                                            </h4>
-
+                                                        "After long ahon enjoy the food and instagramable place in Camp Wagi
+                                                        or Camp Jameaaf's alsi called Mt. Arayat, located at Barangay Bondo
+                                                        Calapan City"
+                                                </h4>
+                                            </div>
                                         </div><!-- Shortcuts -->
-
-
-
-
                                     </aside>
-
-
-
                                 </div>
 
 

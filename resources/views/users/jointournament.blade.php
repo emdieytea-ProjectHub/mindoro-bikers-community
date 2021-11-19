@@ -1,10 +1,11 @@
 @extends('users.layout.app')
 
-@section('body')
-
+@section('head-scripts')
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-    <div class="col-lg-6">
+@endsection
+
+@section('body')
         <div class="central-meta" style="border: 3px solid #0af5dd; border-radius:5px;  box-shadow: 10px 10px aquamarine; ">
             <h1>
                 <small>Join Tournament</small> - {{ $tournament->name }}
@@ -59,7 +60,6 @@
                 </div>
             </form>
         </div>
-    </div>
 @endsection
 
 @push('custom-scripts')

@@ -1,15 +1,18 @@
 @extends('users.layout.app')
 
-@section('body')
+@section('head-scripts')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <div class="col-lg-6">
-        <div class="central-meta item">
-            @if (session('success'))
-                <div class="alert alert-success text-center" style="margin-bottom: 10px">
-                    {{ session('success') }}
-                </div>
-            @endif
-            <form method="POST" action="{{ route('market.checkout.store') }}" enctype="multipart/form-data">
+@endsection
+
+@section('body')
+        <form method="POST" action="{{ route('market.checkout.store') }}" enctype="multipart/form-data">
+            <div class="central-meta item">
+                @if (session('success'))
+                    <div class="alert alert-success text-center" style="margin-bottom: 10px">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
                 @csrf
                 <div class="card-header">
                     <h3 class="card-title">
@@ -36,19 +39,18 @@
                     </div>
 
                 </div>
-        </div>
+            </div>
 
-        <div class="card-footer">
-            <button class="btn btn-success btn-sm" type="submit">
-                Continue
-            </button>
-        </div>
+            <div class="card-footer">
+                <button class="btn btn-success btn-sm" type="submit">
+                    Continue
+                </button>
+            </div>
         </form>
-    </div>
+@endsection
 
-    </div>
-
-    </div>
+<!-- centerl meta -->
+@section('custom-scripts')
     <script>
         $('.numeric').keypress(function(e) {
             var a = [];
@@ -64,5 +66,3 @@
         });
     </script>
 @endsection
-
-<!-- centerl meta -->

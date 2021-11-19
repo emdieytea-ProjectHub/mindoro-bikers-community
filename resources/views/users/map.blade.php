@@ -1,7 +1,6 @@
 @extends('users.layout.app')
 
 @section('body')
-     <div class="col-lg-9">
           <div class="central-meta"
                style="border: 3px solid #0af5dd; border-radius:5px;  box-shadow: 10px 10px aquamarine; background-color: rgb(240, 240, 240)">
                <div class="row">
@@ -39,8 +38,6 @@
 
 
           </div>
-     </div>
-
 @endsection
 @push('custom-scripts')
      <script

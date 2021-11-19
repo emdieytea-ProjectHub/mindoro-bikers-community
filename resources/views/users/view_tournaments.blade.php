@@ -1,7 +1,6 @@
 @extends('users.layout.app')
 
 @section('body')
-     <div class="col-lg-6">
           <div class="loadMore">
                <div class="central-meta item">
                     <div class="user-post" style="margin-top: 30px">
@@ -73,8 +72,6 @@
                     @endif
                </div>
           </div>
-     </div>
-
 @endsection
 
 @push('custom-scripts')

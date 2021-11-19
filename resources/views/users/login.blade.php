@@ -1,7 +1,6 @@
 @extends('users.layout.app')
 
 @section('body')
-    <div class="col-lg-6">
         <div class="central-meta">
             <div class="editing-info">
                 <h5 class="f-title"><i class="ti-info-alt"></i>Login</h5>
@@ -24,8 +23,8 @@
                     <div class="form-group">
                         <input type="text" required="required" name="email">
                         <label class=" control-label" for="input">
-                            <a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__"
-                                data-cfemail="4b0e262a22270b">[email&nbsp;protected]</a></label><i class="mtrl-select"></i>
+                            <a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4b0e262a22270b">Email</a>
+                        </label><i class="mtrl-select"></i>
                     </div>
 
                     <div class="form-group">
@@ -39,5 +38,4 @@
                 </form>
             </div>
         </div>
-    </div>
 @endsection
