@@ -1,6 +1,7 @@
 @extends('users.layout.app')
 
 @section('body')
+    <div class="col-md-4 col-lg-6">
         <div class="central-meta item"
             style="border: 3px solid #0af5dd; border-radius:5px;  box-shadow: 10px 10px aquamarine; ">
             @if (session('success'))
@@ -69,6 +70,7 @@
                 </div>
             </form>
         </div>
+    </div>
 @endsection
 
 <!-- centerl meta -->

@@ -5,6 +5,7 @@
 @endsection
 
 @section('body')
+    <div class="col-md-8 col-lg-9">
         <form method="POST" action="{{ route('market.checkout.store') }}" enctype="multipart/form-data">
             <div class="central-meta item">
                 @if (session('success'))
@@ -47,6 +48,7 @@
                 </button>
             </div>
         </form>
+    </div>
 @endsection
 
 <!-- centerl meta -->

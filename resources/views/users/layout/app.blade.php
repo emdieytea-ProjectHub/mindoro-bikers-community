@@ -199,7 +199,7 @@
 
                                 </div>
 
-                                @if (Request::is('market/*') || Request::is('market'))
+                                @if (Request::is('market/*') || Request::is('market') || Request::is('view-group/*'))
                                     @yield('body')
                                 @else
                                 <div class="col-md-4 col-lg-6">
@@ -207,8 +207,7 @@
                                 </div>
                                 @endif
 
-
-                                <div class="col-md-4 col-lg-3 @if (Request::is('market/add-product')) d-block @endif @if (Request::is('market/*') || Request::is('market')) d-none @endif">
+                                <div class="col-md-4 col-lg-3 @if (Request::is('market/add-product')) d-block @endif @if (Request::is('market/*') || Request::is('market') || Request::is('view-group/*')) d-none @endif">
                                     <aside class="sidebar static">
                                         <div class="widget"
                                             style="border-right:7px outset; border-bottom:10px outset; border-radius: 10px; border-color:#0af5dd; width: auto;">
@@ -255,9 +254,6 @@
                                         </div><!-- Shortcuts -->
                                     </aside>
                                 </div>
-
-
-
                             </div>
                         </div>
                     </div>

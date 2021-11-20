@@ -1,7 +1,7 @@
 @extends('users.layout.app')
 
 @section('body')
-    <div class="col-lg-12">
+    <div class="col-md-4 col-lg-6">
         <div class="central-meta" style="border: 3px solid #0af5dd; border-radius:5px;  box-shadow: 10px 10px aquamarine; ">
 
             <div class="new-postbox">
@@ -243,7 +243,7 @@
 
         </div>
     </div>
-    <div class="col-lg-12 col-lg-3">
+    <div class="col-md-4 col-lg-3">
         <aside class="sidebar static">
             <div class="widget">
                 <div class="banner medium-opacity bluesh">
