@@ -11,7 +11,7 @@ class userController extends Controller
 {
     //
     public function index(){
-        $users = User::where('type', '1')->get();
+        $users = User::where('type', '1')->get(); // where('id', '<>', auth()->user()->id)
         return view('admin.users', compact('users'));
     }
 
@@ -21,13 +21,23 @@ class userController extends Controller
     }
 
      public function store(Request $request){
-         $password = Hash::make($request->password);
-         User::create(['fname'=>$request->fname,'lname'=>$request->lname, 'email'=>$request->email, 'password'=>$password, 'type'=>'1']);
-         
-         return redirect()->back()->with('success', "added succesfully");
+        $password = Hash::make($request->password);
+        User::create([
+            'avatar' => 'dist/images/resources/avatar.png',
+            'fname' => $request->fname,
+            'lname' => $request->lname,
+            'email' => $request->email,
+            'password' => $password,
+            'type' => '1'
+        ]);
+        
+        return redirect()->back()->with('success', "Successfully Added");
      }
 
       public function delete($id){
+          if ($id == auth()->user()->id) {
+            return redirect()->back()->with('error', 'Logged in user can\'t delete his/her own account.');
+          }
           User::find($id)->delete();
           return redirect()->back()->with('success', 'Successfully Deleted');
       }

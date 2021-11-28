@@ -17,6 +17,7 @@ class userSeeder extends Seeder
     {
         //
         DB::table('users')->insert([
+            'avatar' => 'dist/images/resources/avatar.png',
             'fname'=>'admin',
             'lname'=>'admin',
             'email'=>'admin@gmail.com',

@@ -95,7 +95,7 @@
                               <li class="nav-item">
                                    <a class="nav-link" href="{{ route('admin.users') }}" style="color:white;">
                                         <span data-feather="users" style="color:white;"></span>
-                                        Users
+                                        Admins
                                    </a>
                               </li>
                          </ul>
