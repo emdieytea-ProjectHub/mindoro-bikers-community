@@ -50,7 +50,7 @@ class userController extends Controller
     }
 
     public function update(Request $request, $id){
-        User::find($id)->update($request->only('fname','lnanme','email'));
+        User::find($id)->update($request->only('fname','lname','email'));
         return redirect()->route('admin.users')->with('success', 'Successfully Updated');
     }
 }
